@@ -13,6 +13,17 @@ services:
     networks:
       - webgateway
 
+  nexus-dev-bo:
+    image: node:17
+    container_name: nexus-dev-bo
+    build:
+      context: ./nexus-dev-bo
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    networks:
+      - webgateway
+
 networks:
   webgateway:
     driver: bridge
