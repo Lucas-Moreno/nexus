@@ -24,6 +24,30 @@ services:
     networks:
       - webgateway
 
+  nexus-user:
+    image: node:16
+    container_name: nexus-user
+    build:
+      context: ./nexus-user
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3003:3003"
+    networks:
+      - webgateway
+
+  nexus-user-bo:
+    image: node:15
+    container_name: nexus-user-bo
+    build:
+      context: ./nexus-user-bo
+      dockerfile: Dockerfile
+    ports:
+      - "3004:3004"
+    networks:
+      - webgateway
+
 networks:
   webgateway:
     driver: bridge
